@@ -1,4 +1,8 @@
 {
+  "ts-node": {
+    "transpileOnly": true,
+    "require": ["typescript-transform-paths/register"]
+  },
   "compilerOptions": {
     "target": "es6",
     "lib": ["es5", "es6"],
@@ -12,6 +16,8 @@
       "@migration/*": ["migration/*"],
       "@config/*": ["config/*"],
       "@routes/*": ["routes/*"],
+      "@models/*": ["models/*"],
+      "@utils/*": ["utils/*"],
       "@middlewares/*": ["middlewares/*"]
     },
     "resolveJsonModule": true,
@@ -23,6 +29,13 @@
     "strict": true,
 
     "skipLibCheck": true,
-    "sourceMap": true
+    "sourceMap": true,
+    "plugins": [
+      // Transform paths in output .js files
+      { "transform": "typescript-transform-paths" },
+
+      // Transform paths in output .d.ts files (Include this line if you output declarations files)
+      { "transform": "typescript-transform-paths", "afterDeclarations": true }
+    ]
   }
 }
