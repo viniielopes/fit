@@ -1,9 +1,9 @@
 import { AppDataSource } from '@config/supabase';
 import { Book } from '@entities/Book';
 import { GetBookParams, SaveBookParams } from './types';
-import { PutBookSchema } from '@routes/books/types';
+import { PutBookSchema } from '@routes/books/put/types';
 
-export const saveBook = async (book: SaveBookParams) => {
+export const saveBookModel = async (book: SaveBookParams) => {
   const bookRepository = AppDataSource.getRepository(Book);
 
   try {
@@ -15,7 +15,7 @@ export const saveBook = async (book: SaveBookParams) => {
   }
 };
 
-export const updateBook = async (book: PutBookSchema) => {
+export const updateBookModel = async (book: PutBookSchema) => {
   const bookRepository = AppDataSource.getRepository(Book);
 
   try {
@@ -34,7 +34,7 @@ export const updateBook = async (book: PutBookSchema) => {
   }
 };
 
-export const deleteBook = async (id: number) => {
+export const deleteBookModel = async (id: number) => {
   const bookRepository = AppDataSource.getRepository(Book);
 
   try {
@@ -46,7 +46,7 @@ export const deleteBook = async (id: number) => {
   }
 };
 
-export const getBooks = async ({ page, size }: GetBookParams) => {
+export const getBooksModel = async ({ page, size }: GetBookParams) => {
   const bookRepository = AppDataSource.getRepository(Book);
 
   const skip = page !== 1 ? page - 1 * 10 : undefined;
@@ -63,7 +63,7 @@ export const getBooks = async ({ page, size }: GetBookParams) => {
   }
 };
 
-export const getBookById = async (id: number) => {
+export const getBookByIdModel = async (id: number) => {
   const bookRepository = AppDataSource.getRepository(Book);
 
   try {
