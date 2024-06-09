@@ -5,12 +5,8 @@ const constraints = {
   type: ['image/png', 'image/jpg', 'image/jpeg'],
 };
 
-export const putBookSchema = z
+export const postBookSchema = z
   .object({
-    id: z.number({
-      required_error: 'id is required',
-      coerce: true,
-    }),
     autor: z.string({
       required_error: 'autor is required',
     }),
@@ -21,7 +17,7 @@ export const putBookSchema = z
       required_error: 'descricao is required',
     }),
     dataPublicacao: z.string({ required_error: 'dataPublicacao is required' }).date(),
-    imagemCapa: z.string({ required_error: 'imagemCapa is required' }),
+
     file: z
       .custom<Express.Multer.File>()
       .refine((val: Express.Multer.File) => val?.size > 0, 'file is required')
@@ -36,7 +32,6 @@ export const putBookSchema = z
       ),
   })
   .required({
-    id: true,
     dataPublicacao: true,
     descricao: true,
     titulo: true,

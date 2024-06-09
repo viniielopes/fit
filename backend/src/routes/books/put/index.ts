@@ -4,7 +4,7 @@ import { PutBookSchema } from './types';
 import { updateBookModel } from '@models/Book';
 
 export const putBook = async (req: Request, res: Response) => {
-  const values = req.body as PutBookSchema;
+  const { file, ...values } = req.body as PutBookSchema;
 
   await uploadImage({
     imageTitle: values.imagemCapa,

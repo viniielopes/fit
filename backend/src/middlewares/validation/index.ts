@@ -2,11 +2,11 @@ import { Request, Response, NextFunction } from 'express';
 import { z } from 'zod';
 
 export const validateRequest =
-  (schema: z.Schema) =>
-  (req: Request, res: Response, next: NextFunction) => {
-    const { params, query, body } = req;
+  (schema: z.Schema) => (req: Request, res: Response, next: NextFunction) => {
+    const { params, query, body, file } = req;
 
     const validatedData = schema.safeParse({
+      file,
       ...body,
       ...params,
       ...query,

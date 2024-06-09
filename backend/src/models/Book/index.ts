@@ -11,11 +11,15 @@ export const saveBookModel = async (book: SaveBookParams) => {
 
     return res;
   } catch (error) {
-    throw new Error(`Erro ao salvar`);
+    if (error instanceof Error) {
+      throw new Error(error.message);
+    }
+
+    throw new Error('Erro ao salvar');
   }
 };
 
-export const updateBookModel = async (book: PutBookSchema) => {
+export const updateBookModel = async (book: Omit<PutBookSchema, 'file'>) => {
   const bookRepository = AppDataSource.getRepository(Book);
 
   try {
@@ -30,7 +34,11 @@ export const updateBookModel = async (book: PutBookSchema) => {
 
     return res;
   } catch (error) {
-    throw new Error(`Erro ao editar`);
+    if (error instanceof Error) {
+      throw new Error(error.message);
+    }
+
+    throw new Error('Erro ao editar');
   }
 };
 
@@ -42,6 +50,10 @@ export const deleteBookModel = async (id: number) => {
 
     return res;
   } catch (error) {
+    if (error instanceof Error) {
+      throw new Error(error.message);
+    }
+
     throw new Error(`Erro ao deletar`);
   }
 };
@@ -59,6 +71,10 @@ export const getBooksModel = async ({ page, size }: GetBookParams) => {
 
     return res;
   } catch (error) {
+    if (error instanceof Error) {
+      throw new Error(error.message);
+    }
+
     throw new Error(`Erro ao buscar`);
   }
 };
@@ -73,6 +89,10 @@ export const getBookByIdModel = async (id: number) => {
 
     return res;
   } catch (error) {
+    if (error instanceof Error) {
+      throw new Error(error.message);
+    }
+
     throw new Error(`Erro ao buscar livro especifico`);
   }
 };
