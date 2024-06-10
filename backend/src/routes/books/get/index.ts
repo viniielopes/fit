@@ -8,6 +8,14 @@ export const getBookById = async (req: Request, res: Response) => {
 
   const response = await getBookByIdModel(id);
 
+  if (response) {
+    const url = await getImageURL({
+      imageTitle: response.imagemCapa,
+    });
+
+    response.imageURL = url;
+  }
+
   return res.json(response);
 };
 

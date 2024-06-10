@@ -1,7 +1,7 @@
 import { z } from 'zod';
 
 const constraints = {
-  maxSize: 1024 * 1024 * 1, // 1MB
+  maxSize: 1024 * 1024 * 2, // 1MB
   type: ['image/png', 'image/jpg', 'image/jpeg'],
 };
 

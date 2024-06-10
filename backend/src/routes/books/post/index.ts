@@ -2,6 +2,7 @@ import { uploadImage } from '@utils/upload-image';
 import { Request, Response } from 'express';
 import { PostBookSchema } from './types';
 import { saveBookModel } from '@models/Book';
+import { getImageURL } from '@utils/get-image-url';
 
 export const postBook = async (req: Request, res: Response) => {
   const { file, ...values } = req.body as PostBookSchema;
@@ -18,6 +19,10 @@ export const postBook = async (req: Request, res: Response) => {
     ...values,
     imagemCapa: uniqueImageName,
   });
+
+  const url = await getImageURL({ imageTitle: uniqueImageName });
+
+  response.imageURL = url
 
   return res.json(response);
 };
