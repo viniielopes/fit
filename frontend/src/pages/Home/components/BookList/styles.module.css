@@ -1,0 +1,17 @@
+.container {
+  --column-count: 3;
+  grid-area: list;
+  display: grid;
+  gap: 3rem;
+  grid-template-columns: repeat(var(--column-count), minmax(16rem, 1fr));
+
+  @media (max-width: 1365px) {
+  --column-count: 2;
+  }
+
+  @media (max-width: 767px) {
+  --column-count: 1;
+  }
+
+
+}
