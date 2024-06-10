@@ -24,7 +24,6 @@ export const putBookSchema = z
     imagemCapa: z.string({ required_error: 'imagemCapa is required' }),
     file: z
       .custom<Express.Multer.File>()
-      .refine((val: Express.Multer.File) => val?.size > 0, 'file is required')
       .refine((file) => {
         return !file || file.size <= constraints.maxSize;
       }, 'Maximum file size is 1Mb')
@@ -41,5 +40,4 @@ export const putBookSchema = z
     descricao: true,
     titulo: true,
     autor: true,
-    file: true,
   });
