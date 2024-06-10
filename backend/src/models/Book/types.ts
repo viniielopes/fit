@@ -9,4 +9,5 @@ export type SaveBookParams = {
 export type GetBookParams = {
   page: number;
   size: number;
+  query?: string;
 };

@@ -7,7 +7,10 @@ namespace NodeJS {
     DB_PASS: string;
 
     S3_ENDPOINT: string;
+    S3_ACCESS_KEY: string;
+    S3_ANON_KEY: string;
     S3_SECRET_KEY: string;
-    S3_SECRET_KEY: string;
+
+    SUPABASE_SERVICE_KEY: string;
   }
 }

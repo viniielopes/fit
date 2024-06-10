@@ -2,6 +2,7 @@ import { AppDataSource } from '@config/supabase';
 import { Book } from '@entities/Book';
 import { GetBookParams, SaveBookParams } from './types';
 import { PutBookSchema } from '@routes/books/put/types';
+import {  FindOptionsWhere, Like } from 'typeorm';
 
 export const saveBookModel = async (book: SaveBookParams) => {
   const bookRepository = AppDataSource.getRepository(Book);
@@ -58,15 +59,27 @@ export const deleteBookModel = async (id: number) => {
   }
 };
 
-export const getBooksModel = async ({ page, size }: GetBookParams) => {
+export const getBooksModel = async ({ page, size, query }: GetBookParams) => {
   const bookRepository = AppDataSource.getRepository(Book);
 
   const skip = page !== 1 ? page - 1 * 10 : undefined;
+
+  const where: FindOptionsWhere<Book> | FindOptionsWhere<Book>[] | undefined = query
+    ? [
+        {
+          titulo: Like(`%${query}%`),
+        },
+        {
+          descricao: Like(`%${query}%`),
+        },
+      ]
+    : undefined;
 
   try {
     const res = await bookRepository.find({
       skip,
       take: size,
+      where,
     });
 
     return res;

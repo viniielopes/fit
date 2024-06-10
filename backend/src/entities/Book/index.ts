@@ -22,6 +22,9 @@ export class Book {
   @Column({ type: 'text' })
   imagemCapa!: string;
 
+  @Column({ type: 'text' , nullable: true })
+  imageURL!: string;
+
   @DeleteDateColumn()
   deletedAt!: Date;
 }

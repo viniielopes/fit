@@ -1,4 +1,4 @@
-import { z } from "zod";
+import { z } from 'zod';
 
 export const getBooksSchema = z
   .object({
@@ -10,6 +10,7 @@ export const getBooksSchema = z
       required_error: 'page is required',
       coerce: true,
     }),
+    query: z.string().optional(),
   })
   .required({
     page: true,
