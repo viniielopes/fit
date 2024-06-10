@@ -4,14 +4,27 @@ import { TextField } from 'components/TextField'
 import { useSearchParams } from 'react-router-dom'
 import { useDebounceValue } from 'usehooks-ts'
 import { useEffect } from 'react'
+import { UseModalFields } from 'stores/useModal'
+import { useModal } from 'stores/useModal'
 
 export const Header = () => {
+  const { setModal } = useModal((state) => ({
+    setModal: state.setModal,
+  })) as UseModalFields<null>
+
   const [debouncedValue, setValue] = useDebounceValue('', 500)
 
   const [, setSearchParams] = useSearchParams()
 
   const onChange = (value: string) => {
     setValue(value)
+  }
+
+  const onClickOpenModalRegister = () => {
+    setModal({
+      name: 'ModalRegister',
+      data: null,
+    })
   }
 
   useEffect(() => {
@@ -31,11 +44,11 @@ export const Header = () => {
     <section className={styles.container}>
       <div className="flex justify-between gap-1">
         <h1 className="text-xl font-bold text-black">Livros</h1>
-        <Button onClick={() => {}}>Novo</Button>
+        <Button onClick={onClickOpenModalRegister}>Novo</Button>
       </div>
 
       <div className="flex">
-        <TextField onChange={onChange}></TextField>
+        <TextField placeholder='Buscar'onChange={onChange} isSearchField></TextField>
       </div>
     </section>
   )

@@ -7,7 +7,7 @@ export default {
       sm: ['1rem', '1.25rem'],
       base: ['1.25rem', '1.5rem'],
       md: ['1.5rem', '2rem'],
-      lg: ['20px', '28px'],
+      lg: ['2rem', '2.5rem'],
       xl: ['2.5rem', '3rem'],
       modal: {
         header: ['2rem', '2.5rem'],
@@ -21,11 +21,15 @@ export default {
       gray: {
         100: '#F0F0F0',
         200: '#E0E0E2',
+        300: '#D5D5D5',
       },
       red: {
         100: '#AD0000',
         200: '#A70000',
       },
+      input: {
+        placeholder: '#444444'
+      }
     },
     extend: {
       spacing: {

@@ -3,6 +3,7 @@ import { BookList } from './components/BookList'
 import { Header } from './components/Header'
 import styles from './styles.module.css'
 import { useSearchParams } from 'react-router-dom'
+import { ModalRegister } from './modals/ModalRegister'
 
 const Home = () => {
   const [searchParams] = useSearchParams()
@@ -12,13 +13,14 @@ const Home = () => {
   const { data: dataBooks, isFetching: isFetchingBooks } = useGetBooks({
     page: 1,
     size: 25,
-    query: search
+    query: search,
   })
 
   return (
     <main className={styles.container}>
       <Header />
       <BookList data={dataBooks || []} isLoading={isFetchingBooks} />
+      <ModalRegister/>
     </main>
   )
 }

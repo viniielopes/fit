@@ -1,5 +1,6 @@
 import { createRoot } from 'react-dom/client'
-import App from 'components/App'
+import App from './App'
+
 import 'styles/global.css'
 import 'react-loading-skeleton/dist/skeleton.css'
 

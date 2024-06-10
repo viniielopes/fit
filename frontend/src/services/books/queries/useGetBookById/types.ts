@@ -1,0 +1,14 @@
+export type GetBookByIdParams = {
+  id: number
+}
+
+export type BooksItems = {
+  id: number
+  titulo: string
+  autor: string
+  descricao: string
+  dataPublicacao: string
+  imagemCapa: string
+  imageURL: string
+  deletedAt: string | null
+}

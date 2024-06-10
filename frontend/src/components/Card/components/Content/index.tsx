@@ -2,8 +2,6 @@ import { ContentProps } from './types'
 
 export const Content = ({ children }: ContentProps) => {
   return (
-    <article className="flex  flex-col gap-1 bg-white p-1">
-      {children}
-    </article>
+    <article className="flex flex-col gap-1 bg-white p-1 flex-1">{children}</article>
   )
 }

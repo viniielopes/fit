@@ -1,7 +1,7 @@
 import { ReactNode } from 'react'
 
 type WidthType = 'normal' | 'full'
-export type ColorProp = 'ghost' | 'red100' | 'primary' | 'red200' | 'gray'
+export type ColorProp = 'ghost' |'red'| 'red100' | 'primary' | 'red200' | 'gray'
 export type ShapeProp = 'square' | 'rounded'
 export type SizeProp = 'small' | 'medium'
 
@@ -12,6 +12,7 @@ export type ButtonWidthSize = {
 export type ButtonProps = {
   children: ReactNode
   color?: ColorProp
+  isLoading?: boolean;
   shape?: ShapeProp
   size?: SizeProp
   onClick(): void

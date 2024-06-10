@@ -17,6 +17,15 @@ export const BookList = ({ data, isLoading }: BookListProps) => {
     )
   }
 
+  if (!data || data?.length === 0) {
+    return (
+      <h2 className="text-center text-base font-semibold">
+        Sem livros cadastrados, clique no botão &quot;Novo&quot; no canto
+        superior direito e cadastre o primeiro livro!
+      </h2>
+    )
+  }
+
   return (
     <section className={styles.container}>
       {data.map((item) => (

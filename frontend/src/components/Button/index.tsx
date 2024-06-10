@@ -6,17 +6,17 @@ import {
   sizeClasses,
   baseClasses,
 } from './variants'
+import { Spinner } from 'components/Spinner'
 
 export const Button = ({
-  active = true,
   children,
   color = 'ghost',
   shape = 'square',
   size = 'medium',
+  isLoading = false,
   onClick,
   ...props
 }: ButtonProps & React.ComponentProps<'button'>) => {
-
   return (
     <button
       className={classNames(
@@ -28,7 +28,7 @@ export const Button = ({
       onClick={onClick}
       {...props}
     >
-      {children}
+      {isLoading ? <Spinner /> : children}
     </button>
   )
 }
