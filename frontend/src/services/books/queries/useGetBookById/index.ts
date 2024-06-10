@@ -9,7 +9,7 @@ export const useGetBookById = ({ id }: GetBookByIdParams) => {
   return useQuery({
     queryKey: [PREFIX, id],
     queryFn: async () => {
-      const response = await api.get<BooksItems>(`/books/${id}` )
+      const response = await api.get<BooksItems>(`/books/${id}`)
 
       return response.data
     },

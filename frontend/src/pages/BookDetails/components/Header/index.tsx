@@ -24,6 +24,7 @@ export const Header = ({ dataBook }: HeaderProps) => {
         filePreview: dataBook?.imageURL,
         titulo: dataBook?.titulo,
         descricao: dataBook?.descricao,
+        imagemCapa: dataBook?.imagemCapa,
         dataPublicacao: dataBook?.dataPublicacao
           ? new Date(dataBook.dataPublicacao)
           : undefined,

@@ -23,3 +23,20 @@ export const optimisticPostUpdate = <T extends { id: number }>({
 
   queryClient.setQueryData<T[]>(activeQuery.queryKey, newData)
 }
+
+export const optimisticPutUpate = <T extends { id: number }>({
+  key,
+  data,
+}: OptimisticUpdateProps<T>) => {
+  const queryCache = queryClient.getQueryCache()
+
+  const activeQuery = queryCache.find({
+    queryKey: [key],
+    exact: false,
+    type: 'active',
+  })
+
+  if (!activeQuery?.queryKey) return
+
+  queryClient.setQueryData<T>(activeQuery.queryKey, data)
+}

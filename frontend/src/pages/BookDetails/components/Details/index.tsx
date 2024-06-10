@@ -28,7 +28,13 @@ export const Details = ({ dataBook }: DetailsProps) => {
         <p className="text-sm font-normal">{dataBook.descricao}</p>
       </div>
 
-      <img src={dataBook.imageURL} className="h-[28rem] w-72 object-contain" />
+      <img
+        key={dataBook.imageURL}
+        src={
+          dataBook.imageURL
+        }
+        className="h-[28rem] w-72 object-contain"
+      />
     </section>
   )
 }

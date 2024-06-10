@@ -5,6 +5,7 @@ import { Details } from './components/Details'
 import { useGetBookById } from 'services/books/queries/useGetBookById'
 import { useParams } from 'react-router-dom'
 import Skeleton from 'react-loading-skeleton'
+import { ModalDelete } from './modals/ModalDelete'
 
 const BookDetails = () => {
   const { id } = useParams()
@@ -24,9 +25,10 @@ const BookDetails = () => {
 
   return (
     <main className={styles.container}>
-      <Header dataBook={dataBook}/>
-      <Details dataBook={dataBook}/>
+      <Header dataBook={dataBook} />
+      <Details dataBook={dataBook} />
       <ModalRegister />
+      <ModalDelete />
     </main>
   )
 }

@@ -10,9 +10,10 @@ import { useModalRegister } from './hook'
 export const ModalRegister = () => {
   const {
     open,
+    title,
     filePreview,
     control,
-    isLoadingPostBooks,
+    isLoadingSubmit,
     inputFileRef,
     handleSubmit,
     onClose,
@@ -22,7 +23,7 @@ export const ModalRegister = () => {
   } = useModalRegister()
 
   return (
-    <Modal open={open} title="Novo livro" onClose={onClose}>
+    <Modal open={open} title={title} onClose={onClose}>
       <form onSubmit={handleSubmit} encType="multipart/form-data">
         <div className="flex w-[48.75rem] flex-col gap-3">
           <div className="flex gap-3">
@@ -90,7 +91,7 @@ export const ModalRegister = () => {
               shape="rounded"
               color="primary"
               type="submit"
-              isLoading={isLoadingPostBooks}
+              isLoading={isLoadingSubmit}
               onClick={handleSubmit}
             >
               Salvar

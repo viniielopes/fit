@@ -3,7 +3,7 @@ import styles from './styles.module.css'
 import { TextField } from 'components/TextField'
 import { useSearchParams } from 'react-router-dom'
 import { useDebounceValue } from 'usehooks-ts'
-import { useEffect } from 'react'
+import { ChangeEventHandler, useEffect } from 'react'
 import { UseModalFields } from 'stores/useModal'
 import { useModal } from 'stores/useModal'
 
@@ -16,8 +16,8 @@ export const Header = () => {
 
   const [, setSearchParams] = useSearchParams()
 
-  const onChange = (value: string) => {
-    setValue(value)
+  const onChange: ChangeEventHandler<HTMLInputElement> = (e) => {
+    setValue(e.target.value)
   }
 
   const onClickOpenModalRegister = () => {
@@ -48,7 +48,11 @@ export const Header = () => {
       </div>
 
       <div className="flex">
-        <TextField placeholder='Buscar'onChange={onChange} isSearchField></TextField>
+        <TextField
+          placeholder="Buscar"
+          onChange={onChange}
+          isSearchField
+        ></TextField>
       </div>
     </section>
   )

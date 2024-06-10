@@ -8,6 +8,7 @@ export const booksRegisterSchema = yup.object({
   dataPublicacao: yup.date().required(),
   file: yup.mixed(),
   filePreview: yup.string().required(),
+  imagemCapa: yup.string(),
 })
 
 export type BooksSchema = yup.InferType<typeof booksRegisterSchema>

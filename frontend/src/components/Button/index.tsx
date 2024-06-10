@@ -14,6 +14,7 @@ export const Button = ({
   shape = 'square',
   size = 'medium',
   isLoading = false,
+  disabled,
   onClick,
   ...props
 }: ButtonProps & React.ComponentProps<'button'>) => {
@@ -26,6 +27,7 @@ export const Button = ({
         sizeClasses[size]
       )}
       onClick={onClick}
+      disabled={isLoading || disabled}
       {...props}
     >
       {isLoading ? <Spinner /> : children}

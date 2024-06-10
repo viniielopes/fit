@@ -1,1 +1,2 @@
-export type ContainerProps = { children: React.ReactNode }
+export type ContainerProps = { children: React.ReactNode;
+onClick():void}

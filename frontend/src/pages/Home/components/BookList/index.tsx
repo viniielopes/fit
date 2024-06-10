@@ -2,8 +2,12 @@ import { Card } from 'components/Card'
 import styles from './styles.module.css'
 import { BookListProps } from './types'
 import Skeleton from 'react-loading-skeleton'
+import { useNavigate } from 'react-router-dom'
+import { BooksItems } from 'services/books/queries/useGetBooks/types'
 
 export const BookList = ({ data, isLoading }: BookListProps) => {
+  const navigate = useNavigate()
+
   if (isLoading) {
     return (
       <section className={styles.container}>
@@ -26,10 +30,14 @@ export const BookList = ({ data, isLoading }: BookListProps) => {
     )
   }
 
+  const onClickBook = (data: BooksItems) => {
+    navigate(`/book/${data.id}`)
+  }
+
   return (
     <section className={styles.container}>
       {data.map((item) => (
-        <Card.Container key={item.id}>
+        <Card.Container key={item.id} onClick={() => onClickBook(item)}>
           <Card.Header imgSrc={item.imageURL}></Card.Header>
 
           <Card.Content>
