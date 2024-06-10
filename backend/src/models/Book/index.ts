@@ -2,7 +2,7 @@ import { AppDataSource } from '@config/supabase';
 import { Book } from '@entities/Book';
 import { GetBookParams, SaveBookParams } from './types';
 import { PutBookSchema } from '@routes/books/put/types';
-import {  FindOptionsWhere, Like } from 'typeorm';
+import { FindOptionsWhere, Like } from 'typeorm';
 
 export const saveBookModel = async (book: SaveBookParams) => {
   const bookRepository = AppDataSource.getRepository(Book);
@@ -80,6 +80,9 @@ export const getBooksModel = async ({ page, size, query }: GetBookParams) => {
       skip,
       take: size,
       where,
+      order: {
+        id: 'DESC',
+      },
     });
 
     return res;
