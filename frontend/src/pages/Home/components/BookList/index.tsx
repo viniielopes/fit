@@ -10,7 +10,7 @@ export const BookList = ({ data, isLoading }: BookListProps) => {
 
   if (isLoading) {
     return (
-      <section className={styles.container}>
+      <section data-testid='loading' className={styles.container}>
         <Skeleton width="100%" height="15rem" baseColor="white"></Skeleton>
         <Skeleton width="100%" height="15rem" baseColor="white"></Skeleton>
         <Skeleton width="100%" height="15rem" baseColor="white"></Skeleton>
